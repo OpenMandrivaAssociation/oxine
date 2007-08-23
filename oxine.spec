@@ -15,6 +15,11 @@ BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
 BuildRequires: XFree86-devel
+BuildRequires: libhal-devel
+BuildRequires: libcdio-devel
+BuildRequires: libcurl-devel
+BuildRequires: libexif-devel
+BuildRequires: gtk2-devel
 BuildRequires: eject
 Requires: xine-plugins >= %xinever
 Requires: eject
