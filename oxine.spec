@@ -1,6 +1,6 @@
 %define name oxine
-%define version 0.6.6
-%define tarballver 0.6
+%define version 0.7.0
+%define tarballver %version
 %define release %mkrel 1
 %define xinever 1-0.beta9
 Summary: OSD-based xine video player frontend
@@ -8,7 +8,6 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.bz2
-Patch: oxine-0_6_0-to-0_6_6.patch
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
@@ -28,8 +27,7 @@ boxes and home entertainment systems.
 
 %prep
 %setup -q -n %name-%tarballver
-%patch -p1
-automake
+
 %build
 %configure2_5x
 %make
@@ -72,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-,root,root)
-%doc README TODO AUTHORS ChangeLog doc/doc.html
+%doc README TODO AUTHORS ChangeLog doc/*.pdf doc/*.html
 %_bindir/%name
 %_datadir/%name
 %_datadir/applications/mandriva-*
