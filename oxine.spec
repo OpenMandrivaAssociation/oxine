@@ -1,5 +1,5 @@
 %define name oxine
-%define version 0.7.0
+%define version 0.7.1
 %define tarballver %version
 %define release %mkrel 1
 %define xinever 1-0.beta9
@@ -7,7 +7,7 @@ Summary: OSD-based xine video player frontend
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.bz2
+Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.gz
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
@@ -20,6 +20,7 @@ BuildRequires: libcdio-devel
 BuildRequires: libcurl-devel
 BuildRequires: libexif-devel
 BuildRequires: gtk2-devel
+BuildRequires: ImageMagick-devel
 BuildRequires: eject
 Requires: xine-plugins >= %xinever
 Requires: eject
