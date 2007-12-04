@@ -14,7 +14,7 @@ Group: Video
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
-BuildRequires: XFree86-devel
+BuildRequires: X11-devel
 BuildRequires: libhal-devel
 BuildRequires: libcdio-devel
 BuildRequires: libcurl-devel
