@@ -11,7 +11,6 @@ Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.gz
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
 BuildRequires: X11-devel
