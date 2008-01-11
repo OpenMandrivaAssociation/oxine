@@ -42,10 +42,6 @@ boxes and home entertainment systems.
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std 
 #OXINE_SKINDIR=%buildroot%_datadir/oxine/skins DEFAULT_SKIN=%buildroot%_datadir/oxine/skins/default
-mkdir -p %buildroot%{_menudir}
-cat > %buildroot%{_menudir}/%{name} <<EOF 
-?package(%name):command="%{_bindir}/%name" title="Oxine" longtitle="OSD Xine Video Player" needs="X11" section="Multimedia/Video" icon="video_section.png" mimetypes="video/mpeg,video/msvideo,video/quicktime,video/x-avi,video/x-ms-asf,video/x-ms-wmv,video/x-msvideo,application/x-ogg,audio/x-mp3,audio/x-mpeg,video/x-fli,audio/x-wav" accept_url="true" multiple_files="true" xdg="true"
-EOF
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
@@ -79,6 +75,5 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/%name
 %_datadir/%name
 %_datadir/applications/mandriva-*
-%_menudir/%name
 
 
