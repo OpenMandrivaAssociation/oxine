@@ -1,7 +1,7 @@
 %define name oxine
 %define version 0.7.1
 %define tarballver %version
-%define release %mkrel 3
+%define release %mkrel 4
 %define xinever 1-0.beta9
 Summary: OSD-based xine video player frontend
 Name: %{name}
@@ -35,7 +35,7 @@ boxes and home entertainment systems.
 %setup -q -n %name-%tarballver
 
 %build
-%configure2_5x
+%configure2_5x --enable-vdr
 %make
 
 %install
