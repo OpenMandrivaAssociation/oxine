@@ -8,6 +8,8 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.gz
+# (Anssi 04/2008) xvdr/xineliboutput support, from SVN, adapted to 0.7.1
+Patch0: oxine-0.7.1-xvdr.patch
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
@@ -33,6 +35,7 @@ boxes and home entertainment systems.
 
 %prep
 %setup -q -n %name-%tarballver
+%patch0 -p1
 
 %build
 %configure2_5x --enable-vdr
