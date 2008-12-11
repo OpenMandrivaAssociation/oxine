@@ -22,7 +22,7 @@ BuildRequires: libcdio-devel
 BuildRequires: libcurl-devel
 BuildRequires: libexif-devel
 BuildRequires: gtk2-devel
-BuildRequires: ImageMagick-devel
+BuildRequires: imagemagick-devel
 BuildRequires: eject
 Requires: xine-plugins >= %xinever
 Requires: eject
