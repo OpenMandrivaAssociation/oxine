@@ -1,7 +1,7 @@
 %define name oxine
 %define version 0.7.1
 %define tarballver %version
-%define release %mkrel 6
+%define release %mkrel 7
 %define xinever 1-0.beta9
 Summary: OSD-based xine video player frontend
 Name: %{name}
