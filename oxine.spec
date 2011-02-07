@@ -1,7 +1,7 @@
 %define name oxine
 %define version 0.7.1
 %define tarballver %version
-%define release %mkrel 9
+%define release %mkrel 10
 %define xinever 1-0.beta9
 Summary: OSD-based xine video player frontend
 Name: %{name}
@@ -10,13 +10,17 @@ Release: %{release}
 Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.gz
 # (Anssi 04/2008) xvdr/xineliboutput support, from SVN, adapted to 0.7.1
 Patch0: oxine-0.7.1-xvdr.patch
+Patch1: oxine-strptime.patch
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
-BuildRequires: X11-devel
+BuildRequires: libx11-devel
+BuildRequires: libxinerama-devel
+BuildRequires: libxtst-devel
+BuildRequires: dbus-glib-devel
 BuildRequires: libhal-devel
 BuildRequires: libcdio-devel
 BuildRequires: libcurl-devel
@@ -36,6 +40,7 @@ boxes and home entertainment systems.
 %prep
 %setup -q -n %name-%tarballver
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure2_5x --enable-vdr
@@ -55,7 +60,7 @@ Icon=video_section
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=X-MandrivaLinux-Multimedia-Video;Video;Player;
+Categories=AudioVideo;Video;Player;
 MimeType=video/mpeg;video/msvideo;video/quicktime;video/x-avi;video/x-ms-asf;video/x-ms-wmv;video/x-msvideo;application/x-ogg;audio/x-mp3;audio/x-mpeg;video/x-fli;audio/x-wav;
 EOF
 
