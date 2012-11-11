@@ -1,0 +1,55 @@
+Index: oxine-0.7.1/src/menu_main.c
+===================================================================
+--- oxine-0.7.1/src/menu_main.c
++++ oxine-0.7.1/src/menu_main.c	2008-04-14 15:24:13.000000000 +0300
+@@ -147,6 +147,8 @@
+ 
+     int num_mrls;
+     char **mrls = xine_get_autoplay_mrls (oxine->xine, "VDR", &num_mrls);
++    if (!mrls)
++	    mrls = xine_get_autoplay_mrls (oxine->xine, "XVDR", &num_mrls);
+     if (mrls) {
+         playlist_clear (oxine->ro_playlist);
+         int i;
+Index: oxine-0.7.1/src/meta_info.c
+===================================================================
+--- oxine-0.7.1/src/meta_info.c
++++ oxine-0.7.1/src/meta_info.c	2008-04-14 15:25:57.000000000 +0300
+@@ -100,7 +108,8 @@
+ 
+     if (starts_with (mrl, "v4l:")
+         || starts_with (mrl, "dvb:")
+-        || starts_with (mrl, "vdr:")) {
++        || starts_with (mrl, "vdr:")
++	|| starts_with (mrl, "xvdr:")) {
+         /* Nothing to do, we return a playback length of zero. */
+     }
+ #ifdef HAVE_IMAGE_PLAYBACK
+Index: oxine-0.7.1/src/odk.c
+===================================================================
+--- oxine-0.7.1/src/odk.c
++++ oxine-0.7.1/src/odk.c	2008-04-14 15:23:23.000000000 +0300
+@@ -319,7 +319,8 @@
+     const char *input = xine_get_meta_info (odk->main_stream,
+                                             XINE_META_INFO_INPUT_PLUGIN);
+ 
+-    return (input && (strcasecmp (input, "vdr") == 0));
++    return (input && ((strcasecmp (input, "vdr") == 0)
++                      || (strcasecmp (input, "xvdr") == 0)));
+ }
+ 
+ 
+Index: oxine-0.7.1/src/utils_playlist.c
+===================================================================
+--- oxine-0.7.1/src/utils_playlist.c
++++ oxine-0.7.1/src/utils_playlist.c	2008-04-14 15:26:23.000000000 +0300
+@@ -122,7 +122,8 @@
+         }
+         else if (starts_with (playitem->mrl, "v4l:/")
+                  || starts_with (playitem->mrl, "dvb:/")
+-                 || starts_with (playitem->mrl, "vdr:/")) {
++                 || starts_with (playitem->mrl, "vdr:/")
++		 || starts_with (playitem->mrl, "xvdr:/")) {
+             msg = ho_strdup (_("Failed to start TV playback!"));
+             type = DIALOG_OK;
+         }
