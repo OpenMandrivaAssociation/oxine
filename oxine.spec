@@ -14,16 +14,14 @@ Patch1: oxine-strptime.patch
 License: GPL
 URL: http://oxine.sf.net
 Group: Video
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
-BuildRequires: libx11-devel
-BuildRequires: libxinerama-devel
-BuildRequires: libxtst-devel
-BuildRequires: dbus-glib-devel
-BuildRequires: libhal-devel
-BuildRequires: libcdio-devel
-BuildRequires: libcurl-devel
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(xinerama)
+BuildRequires: pkgconfig(xtst)
+BuildRequires: pkgconfig(dbus-glib-1)
+BuildRequires: pkgconfig(libcdio)
+BuildRequires: pkgconfig(libcurl)
 BuildRequires: libexif-devel
 BuildRequires: gtk2-devel
 BuildRequires: imagemagick-devel
@@ -43,15 +41,14 @@ boxes and home entertainment systems.
 %patch1 -p1
 
 %build
-%configure2_5x --enable-vdr
+%configure2_5x --enable-vdr --disable-hal
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall_std 
 #OXINE_SKINDIR=%buildroot%_datadir/oxine/skins DEFAULT_SKIN=%buildroot%_datadir/oxine/skins/default
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Oxine
 Comment=OSD Xine Video Player
@@ -66,26 +63,8 @@ EOF
 
 %find_lang %name
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%update_desktop_database
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%clean_desktop_database
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f %name.lang
-%defattr(-,root,root)
 %doc README TODO AUTHORS ChangeLog doc/*.pdf doc/*.html
 %_bindir/%name
 %_datadir/%name
 %_datadir/applications/mandriva-*
-
-
