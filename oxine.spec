@@ -12,7 +12,7 @@ Source0: http://prdownloads.sourceforge.net/oxine/%{name}-%{tarballver}.tar.gz
 Patch0: oxine-0.7.1-xvdr.patch
 Patch1: oxine-strptime.patch
 License: GPL
-URL: http://oxine.sf.net
+URL: https://oxine.sf.net
 Group: Video
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
