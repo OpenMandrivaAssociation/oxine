@@ -14,6 +14,11 @@ Patch1: oxine-strptime.patch
 License: GPL
 URL: https://oxine.sf.net
 Group: Video
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: libxine-devel >= %xinever
 BuildRequires: liblirc-devel
 BuildRequires: pkgconfig(x11)
